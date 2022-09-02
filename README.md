@@ -5,11 +5,11 @@ This program takes input of a csv file of elon musks tweets.
 
 Output is some png's analyzing Elon Musks tweets...
 
-[alt text](line_graph.png)
+![alt text](line_graph.png)
 
-[alt text](pie_chart.png)
+![alt text](pie_chart.png)
 
-[alt text](wordcloud.png)
+![alt text](wordcloud.png)
 
 
 

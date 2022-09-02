@@ -78,7 +78,7 @@ def analyze_data(my_dict):
     my_stopwords = set(STOPWORDS)
     sw_nltk = stopwords.words('english')
     my_stopwords.update(sw_nltk)
-    my_stopwords.update(['https','b', "b'","b '"])
+    my_stopwords.update(['https','b', "b'","b '","co","mims"])
     #my_stopwords.update([x.lower() for x in str(text) if x not in words.words()])
 
     wordcloud = WordCloud(stopwords=my_stopwords, background_color="white", width=800, height=400).generate(str(text))
