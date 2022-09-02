@@ -13,6 +13,6 @@ Output is some png's analyzing Elon Musks tweets...
 
 
 
-##Architecture
+## Architecture
 I used scrapy for retrieving data. Matplotlib, wordcloud, nltk and pandas for data analysis. 
 
