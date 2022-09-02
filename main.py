@@ -1,8 +1,11 @@
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from datetime import datetime
+import nltk 
+from nltk.corpus import stopwords,words
 
 def fetch_data():
     data = pd.read_csv("elonmusk_tweets.csv",parse_dates=True)
@@ -45,7 +48,6 @@ def analyze_data(my_dict):
     plt.close('all')
 
     #line graph code 
-    #print(my_dict['created_at'])
 
     a = [datetime.strptime(d, '%Y-%m-%d %H:%M:%S') for d in my_dict['created_at']]
 
@@ -65,8 +67,24 @@ def analyze_data(my_dict):
     # set chart title
     plt.title("Elon Musk tweet sentiment over time")
     plt.savefig('line_graph.png')
+    plt.close('all')
 
 
+    #wordcloud code
+    text = tweetdf['text'].values
+    
+    #not_words=[x for x in str(text) if x not in words.words()]
+    
+    my_stopwords = set(STOPWORDS)
+    sw_nltk = stopwords.words('english')
+    my_stopwords.update(sw_nltk)
+    my_stopwords.update(['https','b', "b'","b '"])
+    #my_stopwords.update([x.lower() for x in str(text) if x not in words.words()])
+
+    wordcloud = WordCloud(stopwords=my_stopwords, background_color="white", width=800, height=400).generate(str(text))
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    plt.savefig("wordcloud.png")
 if __name__=="__main__":
     analyze_data(fetch_data())
 
